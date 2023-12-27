@@ -1,0 +1,57 @@
+﻿{% extends 'base.html' %}
+{% block content %}
+
+    <!-- start page-wrapper -->
+    <div class="page-wrapper">
+        <!-- cart-area start -->
+        <div class="cart-area section-padding">
+            <div class="container">
+                <div class="form">
+                    <div class="cart-wrapper">
+                        <div class="row">
+                            <div class="col-12">
+                                <form action="cart">
+                                    <table class="table-responsive cart-wrap">
+                                        <thead>
+                                            <tr>
+                                                <th class="images images-b">Order ID</th>
+                                                <th class="product">Date</th>
+                                                <th class="ptice">Quantity</th>
+                                                <th class="ptice">Ship To</th>
+                                                <th class="">Total Price</th>
+                                                <th class="remove">Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for entry in orders_with_total %}
+                                            <tr>
+                                                <td class="images">{{ entry.order.id }}</td>
+                                                <td class="product">{{ entry.order.date.strftime('%d : %m : %Y') }}</td>
+                                                <td class="price">{{ entry.order.products|length }}</td>
+                                                <td class="name">{{ entry.order.customer_name }}</td>
+                                                <td>$ {{ entry.total_price }}</td>
+                                                <td class="status">{{ entry.order.status }}</td>
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- cart-area end -->
+
+    </div>
+    <!-- end of page-wrapper -->
+
+
+
+
+
+
+
+{% endblock %}
+

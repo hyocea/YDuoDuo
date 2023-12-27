@@ -1,0 +1,223 @@
+﻿{% extends 'admin_base.html' %}
+{% block content %}
+
+    <div class="body-content px-8 py-8 bg-slate-100">
+                <div class="flex justify-between mb-10">
+                    <div class="page-title">
+                        <h3 class="mb-0 text-[28px]">Order Details</h3>
+                        <ul class="text-tiny font-medium flex items-center space-x-3 text-text3">
+                            <li class="breadcrumb-item text-muted">
+                                <a href="account-list.html" class="text-hover-primary"> Home</a>
+                            </li>
+                            <li class="breadcrumb-item flex items-center">
+                                <span class="inline-block bg-text3/60 w-[4px] h-[4px] rounded-full"></span>
+                            </li>
+                            <li class="breadcrumb-item text-muted">Order Details #19893507</li>
+                                           
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- table -->
+                <div class="">
+                    <div class="flex items-center flex-wrap justify-between px-8 mb-6 bg-white rounded-t-md rounded-b-md shadow-xs py-6">
+                        <div class="relative">
+                            <h5 class="font-normal mb-0">Oder ID : #26BC663E</h5>
+                            <p class="mb-0 text-tiny">Order Created : Jan 26, 2023 10:30 AM</p>
+                        </div>
+                        <form method="post" action="{{ url_for('order_details', order_id=order.id) }}">
+                            <div class="flex sm:justify-end flex-wrap sm:space-x-6 mt-5 md:mt-0">
+                                <div class="search-select mr-3 flex items-center space-x-3 ">
+                                    <span class="text-tiny inline-block leading-none -translate-y-[2px]">Change Status : </span>
+                                    <select name="new_status">
+                                        <option>Delivered</option>
+                                        <option>Pending</option>
+                                        <option>Refunded</option>
+                                        <option>Denied</option>
+                                    </select>
+                                </div>
+                                <div class="product-add-btn flex ">
+                                    <button type="submit" class="tp-btn ">Save</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 gap-6 mb-6">
+                        <div class="bg-white rounded-t-md rounded-b-md shadow-xs px-8 py-8">
+                            <h5>Customer Details</h5>
+
+                            <div class="relative overflow-x-auto ">
+                                <table class="w-[400px] sm:w-full text-base text-left text-gray-500">
+                                    <tbody>
+                                        <tr class="bg-white border-b border-gray6 last:border-0 text-start mx-9">
+                                            <td class="py-3 font-normal text-[#55585B] w-[50%]">
+                                                Name
+                                            </td>
+                                            <td  class="py-3 whitespace-nowrap ">
+                                                <a href="#" class="flex items-center
+                                                justify-end space-x-5 text-end
+                                                text-heading text-hover-primary">
+                                                    <span class="font-medium ">
+                                                        {{ order.customer_name }}
+                                                    </span>
+                                                </a>
+                                            </td>                                            
+                                        </tr>                                                           
+                                        <tr class="bg-white border-b border-gray6 last:border-0 text-start mx-9">
+                                            <td class="py-3 font-normal text-[#55585B] w-[50%]">
+                                                Email
+                                            </td>
+                                            <td  class="py-3 text-end">
+                                                <a href="mailto:support@mail.com">support@mail.com</a>
+                                            </td>                                            
+                                        </tr>                                                           
+                                        <tr class="bg-white border-b border-gray6 last:border-0 text-start mx-9">
+                                            <td class="py-3 font-normal text-[#55585B] w-[50%]">
+                                                Phone
+                                            </td>
+                                            <td  class="py-3 text-end">
+                                                <a href="">
+                                                    {{ order.phone_number }}
+                                                </a>
+                                            </td>                                            
+                                        </tr>                                                           
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-t-md rounded-b-md shadow-xs px-8 py-8">
+                            <h5>Order Summary</h5>
+
+                            <div class="relative overflow-x-auto ">
+                                <table class="w-[400px] sm:w-full text-base text-left text-gray-500">
+                                    <tbody>
+                                        <tr class="bg-white border-b border-gray6 last:border-0 text-start mx-9">
+                                            <td class="py-3 font-normal text-[#55585B] w-[50%]">
+                                                Order Date
+                                            </td>
+                                            <td  class="py-3 whitespace-nowrap text-end">
+                                                {{ order.date.strftime('%Y-%m-%d') }}
+                                            </td>                                            
+                                        </tr>                                                           
+                                        <tr class="bg-white border-b border-gray6 last:border-0 text-start mx-9">
+                                            <td class="py-3 font-normal text-[#55585B] w-[50%]">
+                                                Payment Method 
+                                            </td>
+                                            <td  class="py-3 text-end">
+                                                Online <img class="w-[40px] h-auto" src="assets/img/icons/visa.svg" alt="">
+                                            </td>                                            
+                                        </tr>                                                           
+                                        <tr class="bg-white border-b border-gray6 last:border-0 text-start mx-9">
+                                            <td class="py-3 font-normal text-[#55585B] w-[50%]">
+                                                Shipping Method
+                                            </td>
+                                            <td  class="py-3 text-end">
+                                                Cash On Delivery
+                                            </td>                                            
+                                        </tr>                                                           
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-t-md rounded-b-md shadow-xs px-8 py-8">
+                            <h5>Deliver To</h5>
+
+                            <div class="relative overflow-x-auto ">
+                                <table class="w-[400px] sm:w-full text-base text-left text-gray-500">
+                                    <tbody>
+                                        <tr class="bg-white border-b border-gray6 last:border-0 text-start mx-9">
+                                            <td class="py-3 font-normal text-[#55585B] w-[40%]">
+                                                Address
+                                            </td>
+                                            <td  class="py-3 text-end">
+                                                {{ order.address }}
+                                            </td>                                            
+                                        </tr>
+                                        <tr class="bg-white border-b border-gray6 last:border-0 text-start mx-9">
+                                            <td class="py-3 font-normal text-[#55585B] w-[40%]">
+                                                Note
+                                            </td>
+                                            <td  class="py-3 whitespace-nowrap text-end">
+                                                {{ order.note }}
+                                            </td>                                            
+                                        </tr>                                                           
+
+                                                                                                   
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-12 gap-6">
+                        <div class="col-span-12 2xl:col-span-8">
+                            <div class="bg-white rounded-t-md rounded-b-md shadow-xs py-8">
+                                <div class="relative overflow-x-auto  mx-8">
+                                    <table class="w-[975px] md:w-full text-base text-left text-gray-500">
+                                        
+                                        <thead class="bg-white">
+                                            <tr class="border-b border-gray6 text-tiny">
+                                                <th scope="col" class="pr-8 py-3 text-tiny text-text2 uppercase font-semibold">
+                                                    Product 
+                                                </th>
+                                                <th scope="col" class="px-3 py-3 text-tiny text-text2 uppercase font-semibold w-[170px] text-end">
+                                                    Unit Price
+                                                </th>
+                                                <th scope="col" class="px-3 py-3 text-tiny text-text2 uppercase font-semibold w-[170px] text-end">
+                                                    Quantity
+                                                </th>
+                                                <th scope="col" class="px-3 py-3 text-tiny text-text2 uppercase font-semibold w-[170px] text-end">
+                                                    Total
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for item in product_details %}
+                                            <tr class="bg-white border-b border-gray6 last:border-0 text-start mx-9">
+                                                <td  class="pr-8 py-5 whitespace-nowrap">
+                                                    <a href="#" class="flex items-center space-x-5">
+                                                        <span class="font-medium text-heading
+                                                        text-hover-primary transition">
+                                                            {{ item.product.name }}
+                                                        </span>
+                                                    </a>
+                                                </td>
+                                                <td class="px-3 py-3 font-normal text-[#55585B] text-end">
+                                                    ${{ item.product.price }}
+                                                </td>
+                                                <td class="px-3 py-3 font-normal text-[#55585B] text-end">
+                                                    {{ item.quantity }}
+                                                </td>
+                                                <td class="px-3 py-3 font-normal text-[#55585B] text-end">
+                                                    ${{ '%.2f'|format(item.quantity * item.product.price) }}
+                                                </td>
+                                            </tr>                                          
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-span-12 2xl:col-span-4">
+                            <div class="bg-white rounded-t-md rounded-b-md shadow-xs py-8 px-8">
+                                <h5>Order Price</h5>
+                                <div class="relative overflow-x-auto">
+                                    <table class="w-full text-base text-left text-gray-500">
+                                        <tbody>
+                                            <tr class="bg-white border-b border-gray6 last:border-0 text-start mx-9">
+                                                <td class="pr-3 py-3 font-normal text-[#55585B] text-start">
+                                                    Grand total:
+                                                </td>
+                                                <td class="px-3 py-3 text-[#55585B] text-end text-lg font-semibold">
+                                                   ${{ total_price }}
+                                                </td>
+                                            </tr>                                          
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+{% endblock %}

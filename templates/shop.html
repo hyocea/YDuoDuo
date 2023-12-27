@@ -1,0 +1,784 @@
+﻿{% extends 'base.html' %}
+
+{% block content %}
+    <div class="page-wrapper">
+        <!-- start wpo-page-title -->
+        <section class="wpo-page-title">
+            <div class="container">
+                <div class="row">
+                    <div class="col col-xs-12">
+                        <div class="wpo-breadcumb-wrap">
+                            <h2>Shop</h2>
+                        </div>
+                    </div>
+                </div> <!-- end row -->
+            </div> <!-- end container -->
+        </section>
+        <!-- end page-title -->
+
+        <!-- shop-section  start-->
+
+        <div class="shop-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="shop-filter-wrap">
+                            <div class="filter-item">
+                                <div class="shop-filter-item">
+                                    <h2>Search</h2>
+                                    <div class="shop-filter-search">
+                                        <form id="search-form" action="/shop" method="get">
+                                            <div>
+                                                <input type="text" class="form-control" name="search"
+                                                       id="search-input" placeholder="Search">
+                                                <button type="submit"><i class="ti-search"></i></button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="filter-item">
+                                <div class="shop-filter-item">
+                                    <h2>Price</h2>
+                                    <ul>
+                                        <li onclick="filterProducts('all')">
+                                            <label class="topcoat-radio-button__label">
+                                                All prices
+                                                <input type="radio" name="topcoat" value="all">
+                                                <span class="topcoat-radio-button"></span>
+                                            </label>
+                                        </li>
+                                        <li onclick="filterProducts('50-100')">
+                                            <label class="topcoat-radio-button__label">
+                                                $50 – $100
+                                                <input type="radio" name="topcoat" value="50-100">
+                                                <span class="topcoat-radio-button"></span>
+                                            </label>
+                                        </li>
+                                        <li onclick="filterProducts('100-200')">
+                                            <label class="topcoat-radio-button__label">
+                                                $100 – $200
+                                                <input type="radio" name="topcoat" value="100-200">
+                                                <span class="topcoat-radio-button"></span>
+                                            </label>
+                                        </li>
+                                        <li onclick="filterProducts('200-300')">
+                                            <label class="topcoat-radio-button__label">
+                                                $200 – $300
+                                                <input type="radio" name="topcoat" value="200-300">
+                                                <span class="topcoat-radio-button"></span>
+                                            </label>
+                                        </li>
+                                        <li onclick="filterProducts('300-400')">
+                                            <label class="topcoat-radio-button__label">
+                                                $300 – $400
+                                                <input type="radio" name="topcoat" value="300-400">
+                                                <span class="topcoat-radio-button"></span>
+                                            </label>
+                                        </li>
+                                        <li onclick="filterProducts('400-99999')">
+                                            <label class="topcoat-radio-button__label">
+                                                $400 and more
+                                                <input type="radio" name="topcoat" value="400-9999999">
+                                                <span class="topcoat-radio-button"></span>
+                                            </label>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="filter-item">
+                                <div class="shop-filter-item">
+                                    <h2>Size</h2>
+                                    <ul>
+                                        <li>
+                                            <label class="topcoat-radio-button__label">
+                                                Small Size
+                                                <input type="radio" name="topcoat2">
+                                                <span class="topcoat-radio-button"></span>
+                                            </label>
+                                        </li>
+                                        <li>
+                                            <label class="topcoat-radio-button__label">
+                                                Large Size
+                                                <input type="radio" name="topcoat2">
+                                                <span class="topcoat-radio-button"></span>
+                                            </label>
+                                        </li>
+                                        <li>
+                                            <label class="topcoat-radio-button__label">
+                                                Medium Size
+                                                <input type="radio" name="topcoat2">
+                                                <span class="topcoat-radio-button"></span>
+                                            </label>
+                                        </li>
+                                        <li>
+                                            <label class="topcoat-radio-button__label">
+                                                Extra large Size
+                                                <input type="radio" name="topcoat2">
+                                                <span class="topcoat-radio-button"></span>
+                                            </label>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="filter-item">
+                                <div class="shop-filter-item color">
+                                    <h2> Color</h2>
+                                    <div class="color-name">
+                                        <ul>
+                                            <li class="color1"><input id="cl1" type="radio" name="col" value="30">
+                                                <label for="cl1"></label>
+                                            </li>
+                                            <li class="color2"><input id="cl2" type="radio" name="col" value="30">
+                                                <label for="cl2"></label>
+                                            </li>
+                                            <li class="color3"><input id="cl3" type="radio" name="col" value="30">
+                                                <label for="cl3"></label>
+                                            </li>
+                                            <li class="color4"><input id="cl4" type="radio" name="col" value="30">
+                                                <label for="cl4"></label>
+                                            </li>
+                                            <li class="color5"><input id="cl5" type="radio" name="col" value="30">
+                                                <label for="cl5"></label>
+                                            </li>
+                                            <li class="color6"><input id="cl6" type="radio" name="col" value="30">
+                                                <label for="cl6"></label>
+                                            </li>
+                                            <li class="color7"><input id="cl7" type="radio" name="col" value="30">
+                                                <label for="cl7"></label>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="filter-item">
+                                <div class="shop-filter-item">
+                                    <h2>Brand</h2>
+                                    <ul>
+                                        <li>
+                                            <label class="topcoat-radio-button__label">
+                                                Men
+                                                <input type="radio" name="topcoat3">
+                                                <span class="topcoat-radio-button"></span>
+                                            </label>
+                                        </li>
+                                        <li>
+                                            <label class="topcoat-radio-button__label">
+                                                Women
+                                                <input type="radio" name="topcoat3">
+                                                <span class="topcoat-radio-button"></span>
+                                            </label>
+                                        </li>
+                                        <li>
+                                            <label class="topcoat-radio-button__label">
+                                                Kids
+                                                <input type="radio" name="topcoat3">
+                                                <span class="topcoat-radio-button"></span>
+                                            </label>
+                                        </li>
+                                        <li>
+                                            <label class="topcoat-radio-button__label">
+                                                Sales
+                                                <input type="radio" name="topcoat3">
+                                                <span class="topcoat-radio-button"></span>
+                                            </label>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-8">
+                        <div class="shop-section-top-inner">
+                            <div class="shoping-list">
+                                <ul class="nav nav-mb-3 main-tab" id="tab" role="tablist">
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link active" id="grid-tab" data-bs-toggle="pill"
+                                            data-bs-target="#grid" type="button" role="tab" aria-controls="grid"
+                                            aria-selected="true"><i class="fa fa-th "></i></button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link" id="list-tab" data-bs-toggle="pill"
+                                            data-bs-target="#list" type="button" role="tab" aria-controls="list"
+                                            aria-selected="false"><i class="fa fa-list "></i></button>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="shoping-product" id="sort-info">
+                                <span>Current Sorting: All Prices</span>
+                            </div>
+                            <div class="short-by">
+                                <ul>
+                                    <li>Short By :</li>
+                                    <li>
+                                        <select name="show">
+                                            <option value="">Show 9 Items</option>
+                                            <option value="">Show 18 Items</option>
+                                            <option value="">Show 27 Items</option>
+                                        </select>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="tab-content">
+                            <div class="tab-pane fade show active" id="grid" role="tabpanel" aria-labelledby="grid-tab">
+                                <div class="product-wrap" id="product-container">
+                                    <div class="row align-items-center">
+                                        {% for product in products %}
+                                        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12">
+                                            <div class="product-single-item active" data-product-id="{{ product.id }}"
+                                                 data-in-wishlist="{{ product.in_wishlist }}">
+                                                <div class="image">
+                                                    <img src="{{ url_for('static',
+                                                        filename='product_img/' + product.image_url) }}"
+                                                             alt="{{ product.name }}">
+
+                                                    <ul class="cart-wrap">
+                                                        <li>
+                                                            <a href="cart.html" data-bs-toggle="tooltip"
+                                                               data-bs-html="true" title="Add To Cart"><i
+                                                                    class="fi flaticon-shopping-cart"></i></a>
+                                                        </li>
+                                                        <li data-bs-toggle="modal" data-bs-target="#popup-quickview">
+                                                            <button data-bs-toggle="tooltip" data-bs-html="true"
+                                                                title="Quick View"><i class="fi ti-eye"></i></button>
+                                                        </li>
+                                                        <li>
+                                                            <a href="compare.html" data-bs-toggle="tooltip"
+                                                                data-bs-html="true" title="Compare"><i
+                                                                    class="fa fa-compress" aria-hidden="true"></i></a>
+                                                        </li>
+                                                    </ul>
+                                                    <div class="shop-btn">
+                                                        <a class="product-btn" href="{{ url_for('product_detail',
+                                            product_id=product.id) }}">Shop Now</a>
+                                                    </div>
+                                                </div>
+                                                <div class="text">
+                                                    <h2><a href="product-single.html">{{ product.name }}</a></h2>
+                                                    <div class="price">
+                                                        <span class="present-price">${{ product.price }}</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade product-list" id="list" role="tabpanel"
+                                aria-labelledby="list-tab">
+                                <div class="product-wrap">
+                                    <div class="row align-items-center">
+                                        <div class="col-xl-12 col-12">
+                                            <div class="product-single-item product-single-item-s2">
+                                                <div class="image">
+                                                    <img src="../static/assets/images/product-category/6.jpg" alt="">
+                                                    <div class="card-icon">
+                                                        <a class="icon" href="wishlist.html">
+                                                            <i class="fa fa-heart-o" aria-hidden="true"></i>
+                                                        </a>
+                                                        <a class="icon-active" href="wishlist.html">
+                                                            <i class="fa fa-heart" aria-hidden="true"></i>
+                                                        </a>
+                                                    </div>
+                                                    <ul class="cart-wrap">
+                                                        <li>
+                                                            <a href="cart.html" data-bs-toggle="tooltip"
+                                                               data-bs-html="true" title="Add To Cart"><i
+                                                                    class="fi flaticon-shopping-cart"></i></a>
+                                                        </li>
+                                                        <li data-bs-toggle="modal" data-bs-target="#popup-quickview">
+                                                            <button data-bs-toggle="tooltip" data-bs-html="true"
+                                                                title="Quick View"><i class="fi ti-eye"></i></button>
+                                                        </li>
+                                                        <li>
+                                                            <a href="compare.html" data-bs-toggle="tooltip"
+                                                                data-bs-html="true" title="Compare"><i
+                                                                    class="fa fa-compress" aria-hidden="true"></i></a>
+                                                        </li>
+                                                    </ul>
+                                                    <div class="shop-btn">
+                                                        <a class="product-btn" href="shop.html">Shop Now</a>
+                                                    </div>
+                                                </div>
+                                                <div class="text">
+                                                    <h2><a href="product-single.html">Long Chain With Lockel</a></h2>
+                                                    <div class="price">
+                                                        <del class="old-price">$120.50</del>
+                                                        <span class="present-price">$100.30</span>
+                                                    </div>
+                                                    <div class="product-ratting">
+                                                        <ul>
+                                                            <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                                            <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                                            <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                                            <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                                            <li><span><i class="fa fa-star"
+                                                                        aria-hidden="true"></i></span>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aperiam
+                                                        consequuntur laudantium quod ratione nulla modi? Repudiandae
+                                                        quidem dicta quia eveniet dignissimos.</p>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-12 col-12">
+                                            <div class="product-single-item product-single-item-s2">
+                                                <div class="image">
+                                                    <img src="../static/assets/images/product-category/1.jpg" alt="">
+                                                    <div class="card-icon">
+                                                        <a class="icon" href="wishlist.html">
+                                                            <i class="fa fa-heart-o" aria-hidden="true"></i>
+                                                        </a>
+                                                        <a class="icon-active" href="wishlist.html">
+                                                            <i class="fa fa-heart" aria-hidden="true"></i>
+                                                        </a>
+                                                    </div>
+                                                    <ul class="cart-wrap">
+                                                        <li>
+                                                            <a href="cart.html" data-bs-toggle="tooltip"
+                                                               data-bs-html="true" title="Add To Cart"><i
+                                                                    class="fi flaticon-shopping-cart"></i></a>
+                                                        </li>
+                                                        <li data-bs-toggle="modal" data-bs-target="#popup-quickview">
+                                                            <button data-bs-toggle="tooltip" data-bs-html="true"
+                                                                title="Quick View"><i class="fi ti-eye"></i></button>
+                                                        </li>
+                                                        <li>
+                                                            <a href="compare.html" data-bs-toggle="tooltip"
+                                                                data-bs-html="true" title="Compare"><i
+                                                                    class="fa fa-compress" aria-hidden="true"></i></a>
+                                                        </li>
+                                                    </ul>
+                                                    <div class="shop-btn">
+                                                        <a class="product-btn" href="shop.html">Shop Now</a>
+                                                    </div>
+                                                </div>
+                                                <div class="text">
+                                                    <h2><a href="product-single.html">White Wedding Shoe</a></h2>
+                                                    <div class="price">
+                                                        <del class="old-price">$120.50</del>
+                                                        <span class="present-price">$100.30</span>
+                                                    </div>
+                                                    <div class="product-ratting">
+                                                        <ul>
+                                                            <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                                            <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                                            <li><span><i class="fa fa-star"
+                                                                        aria-hidden="true"></i></span></li>
+                                                            <li><span><i class="fa fa-star"
+                                                                        aria-hidden="true"></i></span></li>
+                                                            <li><span><i class="fa fa-star"
+                                                                        aria-hidden="true"></i></span>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aperiam
+                                                        consequuntur laudantium quod ratione nulla modi? Repudiandae
+                                                        quidem dicta quia eveniet dignissimos.</p>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-12 col-12">
+                                            <div class="product-single-item product-single-item-s2">
+                                                <div class="image">
+                                                    <img src="../static/assets/images/product-category/3.jpg" alt="">
+                                                    <div class="card-icon">
+                                                        <a class="icon" href="wishlist.html">
+                                                            <i class="fa fa-heart-o" aria-hidden="true"></i>
+                                                        </a>
+                                                        <a class="icon-active" href="wishlist.html">
+                                                            <i class="fa fa-heart" aria-hidden="true"></i>
+                                                        </a>
+                                                    </div>
+                                                    <ul class="cart-wrap">
+                                                        <li>
+                                                            <a href="cart.html" data-bs-toggle="tooltip"
+                                                               data-bs-html="true" title="Add To Cart"><i
+                                                                    class="fi flaticon-shopping-cart"></i></a>
+                                                        </li>
+                                                        <li data-bs-toggle="modal" data-bs-target="#popup-quickview">
+                                                            <button data-bs-toggle="tooltip" data-bs-html="true"
+                                                                title="Quick View"><i class="fi ti-eye"></i></button>
+                                                        </li>
+                                                        <li>
+                                                            <a href="compare.html" data-bs-toggle="tooltip"
+                                                                data-bs-html="true" title="Compare"><i
+                                                                    class="fa fa-compress" aria-hidden="true"></i></a>
+                                                        </li>
+                                                    </ul>
+                                                    <div class="shop-btn">
+                                                        <a class="product-btn" href="shop.html">Shop Now</a>
+                                                    </div>
+                                                </div>
+                                                <div class="text">
+                                                    <h2><a href="product-single.html">Winter Jacket</a></h2>
+                                                    <div class="price">
+                                                        <del class="old-price">$120.50</del>
+                                                        <span class="present-price">$100.30</span>
+                                                    </div>
+                                                    <div class="product-ratting">
+                                                        <ul>
+                                                            <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                                            <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                                            <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                                            <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                                            <li><span><i class="fa fa-star"
+                                                                        aria-hidden="true"></i></span>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aperiam
+                                                        consequuntur laudantium quod ratione nulla modi? Repudiandae
+                                                        quidem dicta quia eveniet dignissimos.</p>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-12 col-12">
+                                            <div class="product-single-item product-single-item-s2">
+                                                <div class="image">
+                                                    <img src="../static/assets/images/product-category/2.jpg" alt="">
+                                                    <div class="card-icon">
+                                                        <a class="icon" href="wishlist.html">
+                                                            <i class="fa fa-heart-o" aria-hidden="true"></i>
+                                                        </a>
+                                                        <a class="icon-active" href="wishlist.html">
+                                                            <i class="fa fa-heart" aria-hidden="true"></i>
+                                                        </a>
+                                                    </div>
+                                                    <ul class="cart-wrap">
+                                                        <li>
+                                                            <a href="cart.html" data-bs-toggle="tooltip"
+                                                               data-bs-html="true" title="Add To Cart"><i
+                                                                    class="fi flaticon-shopping-cart"></i></a>
+                                                        </li>
+                                                        <li data-bs-toggle="modal" data-bs-target="#popup-quickview">
+                                                            <button data-bs-toggle="tooltip" data-bs-html="true"
+                                                                title="Quick View"><i class="fi ti-eye"></i></button>
+                                                        </li>
+                                                        <li>
+                                                            <a href="compare.html" data-bs-toggle="tooltip"
+                                                                data-bs-html="true" title="Compare"><i
+                                                                    class="fa fa-compress" aria-hidden="true"></i></a>
+                                                        </li>
+                                                    </ul>
+                                                    <div class="shop-btn">
+                                                        <a class="product-btn" href="shop.html">Shop Now</a>
+                                                    </div>
+                                                </div>
+                                                <div class="text">
+                                                    <h2><a href="product-single.html">White Wedding Shoe</a></h2>
+                                                    <div class="price">
+                                                        <del class="old-price">$120.50</del>
+                                                        <span class="present-price">$100.30</span>
+                                                    </div>
+                                                    <div class="product-ratting">
+                                                        <ul>
+                                                            <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                                            <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                                            <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                                            <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                                            <li><span><i class="fa fa-star"
+                                                                        aria-hidden="true"></i></span>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aperiam
+                                                        consequuntur laudantium quod ratione nulla modi? Repudiandae
+                                                        quidem dicta quia eveniet dignissimos.</p>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-12 col-12">
+                                            <div class="product-single-item product-single-item-s2">
+                                                <div class="image">
+                                                    <img src="../static/assets/images/product-category/7.jpg" alt="">
+                                                    <div class="card-icon">
+                                                        <a class="icon" href="wishlist.html">
+                                                            <i class="fa fa-heart-o" aria-hidden="true"></i>
+                                                        </a>
+                                                        <a class="icon-active" href="wishlist.html">
+                                                            <i class="fa fa-heart" aria-hidden="true"></i>
+                                                        </a>
+                                                    </div>
+                                                    <ul class="cart-wrap">
+                                                        <li>
+                                                            <a href="cart.html" data-bs-toggle="tooltip"
+                                                               data-bs-html="true" title="Add To Cart"><i
+                                                                    class="fi flaticon-shopping-cart"></i></a>
+                                                        </li>
+                                                        <li data-bs-toggle="modal" data-bs-target="#popup-quickview">
+                                                            <button data-bs-toggle="tooltip" data-bs-html="true"
+                                                                title="Quick View"><i class="fi ti-eye"></i></button>
+                                                        </li>
+                                                        <li>
+                                                            <a href="compare.html" data-bs-toggle="tooltip"
+                                                                data-bs-html="true" title="Compare"><i
+                                                                    class="fa fa-compress" aria-hidden="true"></i></a>
+                                                        </li>
+                                                    </ul>
+                                                    <div class="shop-btn">
+                                                        <a class="product-btn" href="shop.html">Shop Now</a>
+                                                    </div>
+                                                </div>
+                                                <div class="text">
+                                                    <h2><a href="product-single.html">Long Chain With Lockel</a></h2>
+                                                    <div class="price">
+                                                        <del class="old-price">$120.50</del>
+                                                        <span class="present-price">$100.30</span>
+                                                    </div>
+                                                    <div class="product-ratting">
+                                                        <ul>
+                                                            <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                                            <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                                            <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                                            <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                                            <li><span><i class="fa fa-star"
+                                                                        aria-hidden="true"></i></span>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aperiam
+                                                        consequuntur laudantium quod ratione nulla modi? Repudiandae
+                                                        quidem dicta quia eveniet dignissimos.</p>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-12 col-12">
+                                            <div class="product-single-item product-single-item-s2">
+                                                <div class="image">
+                                                    <img src="../static/assets/images/product-category/5.jpg" alt="">
+                                                    <div class="card-icon">
+                                                        <a class="icon" href="wishlist.html">
+                                                            <i class="fa fa-heart-o" aria-hidden="true"></i>
+                                                        </a>
+                                                        <a class="icon-active" href="wishlist.html">
+                                                            <i class="fa fa-heart" aria-hidden="true"></i>
+                                                        </a>
+                                                    </div>
+                                                    <ul class="cart-wrap">
+                                                        <li>
+                                                            <a href="cart.html" data-bs-toggle="tooltip"
+                                                               data-bs-html="true" title="Add To Cart"><i
+                                                                    class="fi flaticon-shopping-cart"></i></a>
+                                                        </li>
+                                                        <li data-bs-toggle="modal" data-bs-target="#popup-quickview">
+                                                            <button data-bs-toggle="tooltip" data-bs-html="true"
+                                                                title="Quick View"><i class="fi ti-eye"></i></button>
+                                                        </li>
+                                                        <li>
+                                                            <a href="compare.html" data-bs-toggle="tooltip"
+                                                                data-bs-html="true" title="Compare"><i
+                                                                    class="fa fa-compress" aria-hidden="true"></i></a>
+                                                        </li>
+                                                    </ul>
+                                                    <div class="shop-btn">
+                                                        <a class="product-btn" href="shop.html">Shop Now</a>
+                                                    </div>
+                                                </div>
+                                                <div class="text">
+                                                    <h2><a href="product-single.html">Long Sleeve Tops</a></h2>
+                                                    <div class="price">
+                                                        <del class="old-price">$120.50</del>
+                                                        <span class="present-price">$100.30</span>
+                                                    </div>
+                                                    <div class="product-ratting">
+                                                        <ul>
+                                                            <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                                            <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                                            <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                                            <li><span><i class="fa fa-star"
+                                                                        aria-hidden="true"></i></span></li>
+                                                            <li><span><i class="fa fa-star"
+                                                                        aria-hidden="true"></i></span>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aperiam
+                                                        consequuntur laudantium quod ratione nulla modi? Repudiandae
+                                                        quidem dicta quia eveniet dignissimos.</p>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- shop-area-end -->
+
+        <!-- start of wpo-site-footer-section -->
+        <footer class="wpo-site-footer">
+            <div class="wpo-upper-footer">
+                <div class="container">
+                    <div class="row">
+                        <div class="col col-lg-3 col-md-6 col-sm-12 col-12">
+                            <div class="widget about-widget">
+                                <div class="logo widget-title">
+                                    <img src="../static/assets/images/logo.svg" alt="blog">
+                                </div>
+                                <p>Mattis inelit neque quis donecyir eleng amet.
+                                    Amet sed et cursus eu euiod.
+                                    Egestaerets in morbiet tristique ornare vulputate vitae enim.</p>
+                                <div class="social-widget">
+                                    <ul>
+                                        <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-skype" aria-hidden="true"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col col-xl-2 col-lg-3 col-md-6 col-sm-12 col-12">
+                            <div class="widget link-widget">
+                                <div class="widget-title">
+                                    <h3>Categories</h3>
+                                </div>
+                                <ul>
+                                    <li><a href="shop.html">Women</a></li>
+                                    <li><a href="shop.html">Men</a></li>
+                                    <li><a href="shop.html">Kids</a></li>
+                                    <li><a href="shop.html">Shoes</a></li>
+                                    <li><a href="shop.html">Jwellery</a></li>
+                                    <li><a href="shop.html">T-shirts</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col col-lg-4 col-md-6 col-sm-12 col-12">
+                            <div class="widget blog-widget">
+                                <div class="widget-title">
+                                    <h3>Blog Post</h3>
+                                </div>
+                                <ul>
+                                    <li>
+                                        <div class="image">
+                                            <img src="../static/assets/images/news/img-01.jpg" alt="">
+                                        </div>
+                                        <div class="text">
+                                            <p><a href="../static/blog-single.html">It is a long established fact that a reader
+                                                    will be distracted.</a></p>
+                                            <span>12 December, 2023</span>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="image">
+                                            <img src="../static/assets/images/news/img-02.jpg" alt="">
+                                        </div>
+                                        <div class="text">
+                                            <p><a href="../static/blog-single.html">It is a long established fact that a reader
+                                                    will be distracted.</a></p>
+                                            <span>12 December, 2023</span>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="col col-lg-3 col-md-6 col-sm-12 col-12">
+                            <div class="widget newsletter-widget">
+                                <div class="widget-title">
+                                    <h3>Newsletter</h3>
+                                </div>
+                                <p>Subscribe to our newsletter and get 10% off your first purchase.</p>
+                                <form>
+                                    <div class="input-1">
+                                        <input type="email" class="form-control" placeholder="Your Email Address.. "
+                                            required="">
+                                    </div>
+                                    <div class="submit clearfix">
+                                        <button type="submit">Subscribe</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- end container -->
+            </div>
+        </footer>
+        <!-- end of wpo-site-footer-section -->
+
+        <!-- popup-quickview  -->
+        <div id="popup-quickview" class="modal fade" tabindex="-1">
+            <div class="modal-dialog quickview-dialog">
+                <div class="modal-content">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i
+                            class="ti-close"></i></button>
+                    <div class="modal-body d-flex">
+                        <div class="product-details">
+                            <div class="row align-items-center">
+                                <div class="col-lg-5">
+                                    <div class="product-single-img">
+                                        <div class="modal-product">
+                                            <div class="item">
+                                                <img src="../static/assets/images/modal.jpg" alt="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-7">
+                                    <div class="product-single-content">
+                                        <h5>White Wedding Shoe</h5>
+                                        <h6>120.00 USD</h6>
+                                        <ul class="rating">
+                                            <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                            <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                            <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                            <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                            <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                        </ul>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quis ultrices
+                                            lectus lobortis, dolor et tempus porta, leo mi efficitur ante, in varius
+                                            felis
+                                            sem ut mauris. Proin volutpat lorem inorci sed vestibulum tempus. Lorem
+                                            ipsum
+                                            dolor sit amet, consectetur adipiscing elit. Aliquam
+                                            hendrerit.
+                                        </p>
+                                        <div class="pro-single-btn">
+                                            <div class="quantity cart-plus-minus">
+                                                <input type="text" value="1">
+                                                <div class="dec qtybutton">-</div>
+                                                <div class="inc qtybutton"></div>
+                                            </div>
+                                            <a href="#" class="theme-btn">Add to cart</a>
+                                        </div>
+                                        <div class="social-share">
+                                            <span>Share with : </span>
+                                            <ul class="socialLinks">
+                                                <li><a href='#'><i class="fa fa-facebook"></i></a></li>
+                                                <li><a href='#'><i class="fa fa-linkedin"></i></a></li>
+                                                <li><a href='#'><i class="fa fa-twitter"></i></a></li>
+                                                <li><a href='#'><i class="fa fa-instagram"></i></a></li>
+                                                <li><a href='#'><i class="fa fa-youtube-play"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- popup-quickview -->
+        </div>
+
+    </div>
+    <!-- end of page-wrapper -->
+
+    <script src="../static/assets/js/function.js"></script>
+
+{% endblock %}

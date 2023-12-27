@@ -1,0 +1,182 @@
+﻿{% extends 'base.html' %}
+{% block content %}
+    <!-- start page-wrapper -->
+    <div class="page-wrapper">
+        <!-- start of wpo-hero-section-1 -->
+        <section class="hero hero-style-3">
+            <div class="hero-slider">
+                <div class="slide">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col col-lg-6 col-md-7 col-sm-12 slide-caption">
+                                <div class="slide-subtitle">
+                                    <p>New Arrivals</p>
+                                </div>
+                                <div class="slide-title">
+                                    <h2>50% Off For
+                                        Your First Shopping </h2>
+                                </div>
+                                <div class="btns">
+                                    <a href="{{ url_for('shop') }}" class="theme-btn">Explore Now</a>
+                                </div>
+                                <div class="slider-pic">
+                                    <img src="{{ url_for('static', filename='assets/images/slider/5.png') }}"
+                                         alt="woman">
+                                </div>
+                                <div class="bg-shape"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slide">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col col-lg-6 col-md-7 col-sm-12 slide-caption">
+                                <div class="slide-subtitle">
+                                    <p>New Arrivals</p>
+                                </div>
+                                <div class="slide-title">
+                                    <h2>Let's Shop & Get the
+                                        Best Discounts </h2>
+                                </div>
+                                <div class="btns">
+                                    <a href="{{ url_for('shop') }}" class="theme-btn">Explore Now</a>
+                                </div>
+                                <div class="slider-pic s2">
+                                    <img src="{{ url_for('static', filename='assets/images/slider/6.png') }}"
+                                         alt="woman">
+                                </div>
+                                <div class="bg-shape"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slide">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col col-lg-6 col-md-7 col-sm-12 slide-caption">
+                                <div class="slide-subtitle">
+                                    <p>New Arrivals</p>
+                                </div>
+                                <div class="slide-title">
+                                    <h2>50% Off For
+                                        Your First Shopping </h2>
+                                </div>
+                                <div class="btns">
+                                    <a href="{{ url_for('shop') }}" class="theme-btn">Explore Now</a>
+                                </div>
+                                <div class="slider-pic">
+                                    <img src="{{ url_for('static', filename='assets/images/slider/7.png') }}"
+                                         alt="woman">
+                                </div>
+                                <div class="bg-shape"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- end of wpo-hero-section-1 -->
+
+        <!-- start of pengu-about-section-->
+        <section class="pengu-about-section section-padding">
+            <div class="about-top-title">
+                <h1>YDuoDuo</h1>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="about-wrap">
+                            <p>
+                                Bringing the Runway to Your Doorstep Without Breaking the Bank.
+                                Discover a world where fashion meets affordability, and quality is never compromised.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="about-bottom-title">
+                <h1>Best Collection</h1>
+            </div>
+        </section>
+        <!-- end of pengu-about-section-->
+
+        <!-- start of pengu-offer-section-->
+        <section class="pengu-offer-section">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-6 col-12">
+                        <div class="offer-left-banner">
+                            <div class="offer-text">
+                                <h2>End of season clearnce
+                                    sale up to 30%</h2>
+                                <p>Stock is limited. Order now to avoid
+                                    disappointment.</p>
+                                <a href="{{ url_for('shop') }}">Shop Now</a>
+                            </div>
+                            <div class="images">
+                                <img src="{{ url_for('static', filename='assets/images/offer-img-1.jpg') }}" alt="gilrs">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-12">
+                        <div class="offer-right-banner">
+                            <div class="images">
+                                <img src="{{ url_for('static', filename='assets/images/offer-img-2.jpg') }}" alt="">
+                            </div>
+                            <div class="offer-text">
+                                <p>Trending Products</p>
+                                <h2>Best Jewelry &
+                                    Makeup Collection</h2>
+                                <a href="{{ url_for('shop') }}">Discover Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- end of pengu-offer-section-->
+
+        <!-- start of pengu-product-category-section-s2 -->
+        <section class="pengu-product-category-section-s2 section-padding">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-6 col-12">
+                        <div class="wpo-section-title">
+                            <h2>Recommended for You</h2>
+                            <p>Below are recommended products based on your likes.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- end of pengu-product-category-section-s2 -->
+
+        <!-- start of pengu-banner-section -->
+        <section class="pengu-banner-section">
+            <div class="container">
+                <div class="banner-wrap">
+                    <div class="row">
+                        <div class="col-lg-7 col-md-9 col-12">
+                            <div class="content">
+                                <div class="bg-text">
+                                    <h1>fasion</h1>
+                                </div>
+                                <h2>Stylish casual
+                                    sweater & sneakers</h2>
+                                <p>Beautiful, Fashionable and Stylish</p>
+                                <a href="{{ url_for('shop') }}">Shop Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- end of pengu-banner-section -->
+
+
+    </div>
+    <!-- end of page-wrapper -->
+
+{% endblock %}
+

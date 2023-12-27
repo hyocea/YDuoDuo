@@ -1,0 +1,145 @@
+﻿{% extends 'admin_base.html' %}
+{% block content %}
+
+    <div class="body-content px-8 py-8 bg-slate-100">
+        <div class="grid grid-cols-12">
+            <div class="col-span-12 2xl:col-span-10">
+                <div class="flex justify-between mb-10 items-end flex-wrap">
+                    <div class="page-title mb-6 sm:mb-0">
+                        <h3 class="mb-0 text-[28px]">Add Product</h3>
+                        <ul class="text-tiny font-medium flex items-center space-x-3 text-text3">
+                            <li class="breadcrumb-item text-muted">
+                                <a href="account-list.html" class="text-hover-primary"> Home</a>
+                            </li>
+                            <li class="breadcrumb-item flex items-center">
+                                <span class="inline-block bg-text3/60 w-[4px] h-[4px] rounded-full"></span>
+                            </li>
+                            <li class="breadcrumb-item text-muted">Add Product</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+                <!-- add product -->
+        <form action="/add-product" method="post" enctype="multipart/form-data">
+            <div class="grid grid-cols-12">
+            <div class="col-span-12 2xl:col-span-10" x-data="{ addProductTab: 1 }">
+                <div class=" mb-3 hidden" >
+                    <div class="flex items-center bg-white rounded-md px-4 py-3">
+                        <button
+                            class="text-base  py-1 px-5 rounded-md border-b border-transparent "
+                            @click="addProductTab = 1"
+                            :class="addProductTab == 1 ? 'bg-theme text-white' : ' bg-white text-textBody'">
+
+                            General
+                        </button>
+                        <button
+                            class="text-base  py-1 px-5 rounded-md"
+                            @click="addProductTab = 2"
+                            :class="addProductTab == 2 ? 'bg-theme text-white' : 'text-textBody bg-white'">
+                            Advanced
+                        </button>
+                    </div>
+                </div>
+                <div class="">
+                    <!-- general tab content -->
+                    <div class="" x-show="addProductTab === 1">
+                        <div class="grid grid-cols-12 gap-6 mb-6">
+                            <div class="col-span-12 xl:col-span-8 2xl:col-span-9 ">
+                                <div class="mb-6 bg-white px-8 py-8 rounded-md">
+                                    <h4 class="text-[22px]">General</h4>
+                                    <!-- input -->
+                                    <div class="mb-5">
+                                        <p class="mb-0 text-base text-black">Product Name <span class="text-red">*</span></p>
+                                        <input class="input w-full h-[44px] rounded-md
+                                        border border-gray6 px-6 text-base" type="text" name="name" placeholder="Product name">
+                                        <span class="text-tiny">A product name is required and recommended to be unique.</span>
+                                    </div>
+                                    <div class="mb-5">
+                                        <p class="mb-0 text-base text-black">Description</p>
+                                        <textarea class="min-h-[200px]" id="editor" name="description">
+                                        </textarea>
+                                    </div>
+                                </div>
+                                <div class="bg-white px-8 py-8 rounded-md mb-6">
+
+                                     <h4 class="text-[22px]">Details</h4>
+                                     <!-- tax vat -->
+                                     <div class="grid sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-x-6">
+
+                                        <div class="mb-5">
+                                            <p class="mb-0 text-base text-black">Price <span class="text-red">*</span></p>
+                                            <input class="input w-full h-[44px] rounded-md border border-gray6
+                                            px-6 text-base" type="text" placeholder="Product price" name="price">
+                                            <span class="text-tiny leading-4">Set the base price of product.</span>
+                                        </div>
+                                        <!-- input -->
+                                        <div class="mb-5">
+                                            <p class="mb-0 text-base text-black">Stock <span class="text-red">*</span></p>
+                                            <input class="input w-full h-[44px] rounded-md border
+                                            border-gray6 px-6 text-base" type="text" placeholder="Stock"
+                                            name="stock">
+                                            <span class="text-tiny leading-4">Enter the product stock.</span>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                            <div class="col-span-12 xl:col-span-4 2xl:col-span-3 ">
+                                <div class="bg-white px-8 py-8 rounded-md mb-6">
+                                    <p class="mb-2 text-base text-black">Upload Image</p>
+                                    <div class="text-center">
+                                        <img id="imagePreview" class="w-[100px] h-auto mx-auto" src="{{ url_for('static',
+                                        filename='admins/img/icons/upload.png') }}" alt="upload img">
+                                    </div>
+                                    <span class="text-tiny text-center w-full inline-block mb-3">
+                                        Image size must be less than 5Mb</span>
+                                    <div>
+                                            <input type="file" id="productImage" name="productImage" class="hidden"
+                                            onchange="previewImage();">
+                                            <label for="productImage" class="text-tiny w-full inline-block py-1 px-4
+                                            rounded-md border border-gray6 text-center hover:cursor-pointer
+                                            hover:bg-theme hover:text-white hover:border-theme transition">
+                                                Upload Image</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="">
+                            <button class="tp-btn px-10 py-2 mb-2" type="submit">Publish</button>
+                            <button class="tp-btn px-10 py-2 border border-[#dfdfdf] bg-transparent text-black hover:text-black hover:bg-white hover:border-white mb-2">Save Draft</button>
+                        </div>
+                    </div>
+                    <!-- general tab content -->
+                    <div class="" x-show="addProductTab === 2"></div>
+                </div>
+            </div>
+        </div>
+        </form>
+    </div>
+    <script>
+        function previewImage() {
+            var fileInput = document.getElementById('productImage');
+            var preview = document.getElementById('imagePreview');
+
+            if (fileInput.files && fileInput.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function(e) {
+                    preview.src = e.target.result;
+                };
+
+                // 读取用户选择的文件并作为数据URL展示
+                reader.readAsDataURL(fileInput.files[0]);
+            } else {
+                // 当没有文件被选中时，显示默认图片
+                preview.src = "{{ url_for('static', filename='admins/img/icons/upload.png') }}";
+            }
+        }
+    </script>
+
+
+
+
+{% endblock %}

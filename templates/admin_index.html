@@ -1,0 +1,82 @@
+﻿{% extends 'admin_base.html' %}
+{% block content %}
+
+    <div class="body-content px-8 py-8 bg-slate-100">
+                <div class="flex justify-between items-end flex-wrap">
+                    <div class="page-title mb-7">
+                        <h3 class="mb-0 text-4xl">Dashboard</h3>
+                        <p class="text-textBody m-0">Welcome to your dashboard</p>
+                    </div>
+                    <div class=" mb-7">
+                        <a href="{{ url_for('add_product') }}" class="tp-btn px-5 py-2">Add Product</a>
+                    </div>
+                </div>
+
+
+                <!-- table -->
+                <div class="overflow-scroll 2xl:overflow-visible">
+                    <div class="w-[1400px] 2xl:w-full">
+                        <div class="grid grid-cols-12 border-b border-gray rounded-t-md bg-white px-10 py-5">
+                            <div class="table-information col-span-4">
+                                <h3 class="font-medium tracking-wide
+                                text-slate-800 text-lg mb-0 leading-none">Product List</h3>
+                            </div>
+                        </div>
+    
+                        <div>
+                            <div class="relative rounded-b-md bg-white px-10 py-7 ">
+                                <!-- table -->
+                                <table class="w-full text-base text-left text-gray-500">
+                                    <thead class="bg-white">
+                                        <tr class="border-b border-gray6 text-tiny">
+                                            <th scope="col" class="pr-8 py-3 text-tiny text-text2 uppercase font-semi-bold">
+                                                Item
+                                            </th>
+                                            <th scope="col" class="px-3 py-3 text-tiny text-text2 uppercase font-semi-bold">
+                                                Product ID
+                                            </th>
+                                            <th scope="col" class="px-3 py-3 text-tiny text-text2 uppercase font-semi-bold">
+                                                Price
+                                            </th>
+                                            <th scope="col" class="px-3 py-3 text-tiny text-text2 uppercase  font-semi-bold w-[14%] 2xl:w-[12%]">
+                                                Action
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for product in products %}
+                                        <tr class="bg-white border-b border-gray6 last:border-0 text-start">
+                                            <td  class="pr-8  whitespace-nowrap">
+                                                <a href="#" class="font-medium text-heading text-hover-primary">{{ product.name }}</a>
+                                            </td>
+                                            <td class="px-3 py-3 font-normal text-slate-600">
+                                                #{{ product.id }}
+                                            </td>
+                                            <td class="px-3 py-3 font-normal text-slate-600">
+                                                ${{ '%0.2f' | format(product.price) }}
+                                            </td>
+                                            <td class="px-3 py-3">
+                                                <div class="flex items-center space-x-2">
+                                                    <button class="bg-white text-slate-700 border border-slate-200
+                                                    hover:bg-danger hover:border-danger hover:text-white inline-block
+                                                    text-center leading-5 text-tiny font-medium pt-[6px] pb-[5px]
+                                                    px-4  rounded-md ">
+                                                       <a href="{{ url_for('delete_product', product_id=product.id) }}">
+                                                           Delete
+                                                       </a>
+                                                    </button>
+                                                </div>  
+                                            </td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+{% endblock %}
+

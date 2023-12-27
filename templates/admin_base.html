@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% block head %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YDuoDuo-Merchant</title>
+    <link rel="shortcut icon" type="image" href="{{ url_for('static', filename='assets/images/YDD-logo.png') }}">
+
+    <!-- css links -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='admins/css/perfect-scrollbar.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='admins/css/choices.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='admins/css/apexcharts.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='admins/css/quill.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='admins/css/rangeslider.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='admins/css/custom.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='admins/css/main.css') }}">
+    {% endblock %}
+</head>
+<body>
+
+    <div class="tp-main-wrapper bg-slate-100 h-screen" x-data="{ sideMenu: false }">
+        <aside class="w-[300px] lg:w-[250px] xl:w-[300px] border-r border-gray overflow-y-scroll sidebar-scrollbar fixed left-0 top-0 h-full bg-white z-50 transition-transform duration-300" :class="sideMenu ? 'translate-x-[0px]' : ' -translate-x-[300px] lg:translate-x-[0]'">
+            <div>
+                <div class="py-4 pb-8 px-8 border-b border-gray h-[78px]">
+                    <a href="{{ url_for('admin_index') }}">
+                        <img class="w-[140px]"
+                             src="{{ url_for('static', filename='assets/images/YDD.png') }}" alt="logo">
+                    </a>
+                </div>
+                <div class="px-4 py-5" x-data="{nav:null}">
+                    <ul>
+                        <li>
+                            <a
+                            href="{{ url_for('admin_index') }}"
+                            class="group rounded-md relative text-black text-lg font-medium
+                            inline-flex items-center w-full
+                            transition-colors ease-in-out duration-300
+                            px-5 py-[9px] mb-2 hover:bg-gray sidebar-link-active"
+                            >
+                                Dashboard
+                            </a>
+                        </li>
+                        <li>
+                            <a
+                            href="{{ url_for('add_product') }}"
+                            class="group rounded-md relative text-black text-lg font-medium
+                            inline-flex items-center w-full transition-colors ease-in-out duration-300
+                            px-5 py-[9px] mb-3 hover:bg-gray sidebar-link-active">
+
+                                Add Products
+
+                            </a>
+
+                        </li>
+
+
+                        <li>
+                            <a
+                            href="{{ url_for('admin_orders') }}"
+                            class="group rounded-md relative text-black text-lg font-medium inline-flex
+                            items-center w-full transition-colors ease-in-out duration-300 px-5 py-[9px]
+                            mb-3 hover:bg-gray sidebar-link-active">
+
+                                Orders
+
+                            </a>
+
+                        </li>
+                        <li>
+                            <a
+                            href="{{ url_for('logout') }}"
+                            class="group rounded-md relative text-black text-lg font-medium inline-flex
+                            items-center w-full transition-colors ease-in-out duration-300 px-5 py-[9px]
+                            mb-3 hover:bg-gray sidebar-link-active">
+
+                                Logout
+
+                            </a>
+
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+
+        </aside>
+
+        <div class="fixed top-0 left-0 w-full h-full z-40 bg-black/70 transition-all duration-300"
+             :class="sideMenu ? 'visible opacity-1' : '  invisible opacity-0 '"
+             x-on:click="sideMenu = ! sideMenu"> </div>
+
+        <div class="tp-main-content lg:ml-[250px] xl:ml-[300px] w-[calc(100% - 300px)]"  x-data="{ searchOverlay: false }">
+
+            <header class="relative z-10 bg-white border-b border-gray border-solid py-5 px-8 pr-8">
+            </header>
+            {% block content %}
+            {% endblock %}
+        </div>
+    </div>
+
+    <script type="text/javascript">
+      {% with messages = get_flashed_messages() %}
+        {% if messages %}
+          alert("{{ messages|join('\\n') }}");
+        {% endif %}
+      {% endwith %}
+    </script>
+    <script src="{{ url_for('static', filename='admins/js/alpine.js') }}"></script>
+    <script src="{{ url_for('static', filename='admins/js/perfect-scrollbar.js') }}"></script>
+    <script src="{{ url_for('static', filename='admins/js/choices.js') }}"></script>
+    <script src="{{ url_for('static', filename='admins/js/chart.js') }}"></script>
+    <script src="{{ url_for('static', filename='admins/js/apexchart.js') }}"></script>
+    <script src="{{ url_for('static', filename='admins/js/quill.js') }}"></script>
+    <script src="{{ url_for('static', filename='admins/js/rangeslider.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='admins/js/main.js') }}"></script>
+
+</body>
+</html>

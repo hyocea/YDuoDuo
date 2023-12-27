@@ -1,0 +1,205 @@
+﻿{% extends 'base.html' %}
+{% block content %}
+
+    <!-- start page-wrapper -->
+    <div class="page-wrapper">
+
+        <!-- start wpo-page-title -->
+        <section class="wpo-page-title">
+            <div class="container">
+                <div class="row">
+                    <div class="col col-xs-12">
+                        <div class="wpo-breadcumb-wrap">
+                            <h2>Cart</h2>
+                            <ol class="wpo-breadcumb-wrap">
+                                <li><a href="index.html">Home</a></li>
+                                <li>Cart</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div> <!-- end row -->
+            </div> <!-- end container -->
+        </section>
+        <!-- end page-title -->
+
+        <!-- cart-area start -->
+        <div class="cart-area section-padding">
+            <div class="container">
+                <div class="form">
+                    <div class="cart-wrapper">
+                        <div class="row">
+                            <div class="col-12">
+                                <form action="cart">
+                                    <table class="table-responsive cart-wrap">
+                                        <thead>
+                                            <tr>
+                                                <th class="images images-b">Image</th>
+                                                <th class="product-2">Product Name</th>
+                                                <th class="pr">Quantity</th>
+                                                <th class="ptice">Price</th>
+                                                <th class="stock">Total Price</th>
+                                                <th class="remove remove-b">Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for item in products %}
+                                                <tr>
+                                                    <td class="images">
+                                                        <img src="{{ url_for('static', filename='product_img/' + item.details.image_url) }}" alt="{{ item.details.name }}">
+                                                    </td>
+                                                    <td class="product">
+                                                        <ul>
+                                                            <li class="first-cart">{{ item.details.name }}</li>
+                                                            <!-- 可以添加更多产品属性，如品牌、尺寸等 -->
+                                                        </ul>
+                                                    </td>
+                                                    <td class="stock">
+                                                        <ul class="input-style">
+                                                            <li class="quantity">
+                                                                <input type="number" value="{{ item.quantity }}" class="quantity-input" data-product-id="{{ item.details.id }}">
+                                                                <div class="dec qtybutton" onclick="updateQuantity('{{ item.details.id }}', 'dec')">-</div>
+                                                                <div class="inc qtybutton" onclick="updateQuantity('{{ item.details.id }}', 'inc')">+</div>
+                                                            </li>
+                                                        </ul>
+                                                    </td>
+                                                    <td class="price">${{ item.details.price }}</td>
+                                                    <td class="subtotal">${{ item.details.price * item.quantity }}</td>
+                                                    <td class="action">
+                                                        <ul>
+                                                            <li class="w-btn"><a href="{{ url_for('remove_from_cart', product_id=item.details.id) }}"><i class="fi ti-trash"></i></a></li>
+                                                        </ul>
+                                                    </td>
+                                                </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                     <div class="submit-btn-area">
+                                        <ul>
+                                            <li><a class="theme-btn" href="{{ url_for('index') }}">Continue Shopping <i
+                                                        class="fa fa-angle-double-right"></i></a></li>
+                                            <li><button class="theme-btn" type="submit">Update Cart</button></li>
+                                        </ul>
+                                    </div>
+                                </form>
+
+                                <div class="cart-product-list">
+                                    <ul>
+                                        <li class="cart-b">Total Price<span>${{ total_price }}</span></li>
+                                    </ul>
+                                </div>
+
+                                <div class="submit-btn-area">
+                                    <ul>
+                                        <li><a class="theme-btn" href="{{ url_for('checkout') }}">Proceed to Checkout <i
+                                                    class="fa fa-angle-double-right"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- cart-area end -->
+
+        <!-- start of wpo-site-footer-section -->
+        <footer class="wpo-site-footer">
+            <div class="wpo-upper-footer">
+                <div class="container">
+                    <div class="row">
+                        <div class="col col-lg-3 col-md-6 col-sm-12 col-12">
+                            <div class="widget about-widget">
+                                <div class="logo widget-title">
+                                    <img src="../static/assets/images/logo.svg" alt="blog">
+                                </div>
+                                <p>Mattis inelit neque quis donecyir eleng amet.
+                                    Amet sed et cursus eu euiod.
+                                    Egestaerets in morbiet tristique ornare vulputate vitae enim.</p>
+                                <div class="social-widget">
+                                    <ul>
+                                        <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-skype" aria-hidden="true"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col col-xl-2 col-lg-3 col-md-6 col-sm-12 col-12">
+                            <div class="widget link-widget">
+                                <div class="widget-title">
+                                    <h3>Categories</h3>
+                                </div>
+                                <ul>
+                                    <li><a href="shop.html">Women</a></li>
+                                    <li><a href="shop.html">Men</a></li>
+                                    <li><a href="shop.html">Kids</a></li>
+                                    <li><a href="shop.html">Shoes</a></li>
+                                    <li><a href="shop.html">Jwellery</a></li>
+                                    <li><a href="shop.html">T-shirts</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col col-lg-4 col-md-6 col-sm-12 col-12">
+                            <div class="widget blog-widget">
+                                <div class="widget-title">
+                                    <h3>Blog Post</h3>
+                                </div>
+                                <ul>
+                                    <li>
+                                        <div class="image">
+                                            <img src="../static/assets/images/news/img-01.jpg" alt="">
+                                        </div>
+                                        <div class="text">
+                                            <p><a href="../static/blog-single.html">It is a long established fact that a reader
+                                                    will be distracted.</a></p>
+                                            <span>12 December, 2023</span>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="image">
+                                            <img src="../static/assets/images/news/img-02.jpg" alt="">
+                                        </div>
+                                        <div class="text">
+                                            <p><a href="../static/blog-single.html">It is a long established fact that a reader
+                                                    will be distracted.</a></p>
+                                            <span>12 December, 2023</span>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="col col-lg-3 col-md-6 col-sm-12 col-12">
+                            <div class="widget newsletter-widget">
+                                <div class="widget-title">
+                                    <h3>Newsletter</h3>
+                                </div>
+                                <p>Subscribe to our newsletter and get 10% off your first purchase.</p>
+                                <form>
+                                    <div class="input-1">
+                                        <input type="email" class="form-control" placeholder="Your Email Address.. "
+                                            required="">
+                                    </div>
+                                    <div class="submit clearfix">
+                                        <button type="submit">Subscribe</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- end container -->
+            </div>
+
+        </footer>
+        <!-- end of wpo-site-footer-section -->
+
+
+    </div>
+    <!-- end of page-wrapper -->
+
+    <script src="../static/assets/js/cart.js"></script>
+
+
+{% endblock %}

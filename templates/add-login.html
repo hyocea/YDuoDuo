@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eBazer - Tailwind CSS eCommerce Admin Template</title>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='admins/img/logo/favicon.png') }}" type="image/x-icon">
+
+    <!-- css links -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='admins/css/perfect-scrollbar.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='admins/css/choices.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='admins/css/apexcharts.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='admins/css/quill.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='admins/css/rangeslider.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='admins/css/custom.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='admins/css/main.css') }}">
+</head>
+<body>
+
+    <!--  -->
+    <div class="tp-main-wrapper h-screen">
+        <div class="container mx-auto my-auto h-full flex items-center justify-center">
+            <div class="pt-[120px] pb-[120px]">
+                <div class="grid grid-cols-12 shadow-lg bg-white overflow-hidden rounded-md ">
+                    <div class="col-span-4 lg:col-span-6 relative h-full hidden lg:block">
+                        <div class="data-bg absolute top-0 left-0 w-full h-full bg-cover bg-no-repeat" data-bg="assets/img/bg/login-bg.jpg"></div>
+                    </div>
+                    <div class="col-span-12 lg:col-span-6 md:w-[500px] mx-auto my-auto  pt-[50px] py-[60px] px-5 md:px-[60px]">
+                        <div class="text-center">
+                            <h4 class="text-[24px] mb-1"> Create a merchant account</h4>
+                            <p>Want to give up creating?
+                                <span> <a href="{{ url_for('admin_dashboard') }}"
+                                          class="text-theme">Quit</a> </span></p>
+                        </div>
+
+                        <div>
+                            <form action="{{ url_for('create_merchant') }}" method="POST">
+                                <div class="mb-5">
+                                    <p class="mb-0 text-base text-black">Username <span class="text-red">*</span></p>
+                                    <input class="input w-full h-[49px] rounded-md border border-gray6 px-6 text-base"
+                                           type="text" id="username" name="username" required>
+                                </div>
+                                <div class="mb-5">
+                                    <p class="mb-0 text-base text-black">Password <span class="text-red">*</span></p>
+                                    <input class="input w-full h-[49px] rounded-md border border-gray6 px-6 text-base"
+                                           type="password" id="password" name="password" required>
+                                </div>
+
+                                <button class="tp-btn h-[49px] w-full justify-center"
+                                    type="submit">Creat</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='admins/js/alpine.js') }}"></script>
+    <script src="{{ url_for('static', filename='admins/js/perfect-scrollbar.js') }}"></script>
+    <script src="{{ url_for('static', filename='admins/js/choices.js') }}"></script>
+    <script src="{{ url_for('static', filename='admins/js/chart.js') }}"></script>
+    <script src="{{ url_for('static', filename='admins/js/apexchart.js') }}"></script>
+    <script src="{{ url_for('static', filename='admins/js/quill.js') }}"></script>
+    <script src="{{ url_for('static', filename='admins/js/rangeslider.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='admins/js/main.js') }}"></script>
+
+</body>
+</html>
