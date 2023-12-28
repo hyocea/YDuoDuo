@@ -108,7 +108,7 @@
                     <div class="col-lg-6 col-12">
                         <div class="offer-left-banner">
                             <div class="offer-text">
-                                <h2>End of season clearnce
+                                <h2>End of season clearance
                                     sale up to 30%</h2>
                                 <p>Stock is limited. Order now to avoid
                                     disappointment.</p>
@@ -146,6 +146,32 @@
                             <h2>Recommended for You</h2>
                             <p>Below are recommended products based on your likes.</p>
                         </div>
+                        {% for product in products %}
+                            <div class="col-lg-3 col-md-6 col-12 custom-grid IllustAtor all sales women zoomIn" data-wow-duration="2000ms">
+                                <div class="product-single-item" data-product-id="{{ product.id }}" data-in-wishlist="{{ product.in_wishlist }}">
+                                    <div class="image">
+                                        <img src="{{ url_for('static', filename='product_img/' + product.image_url) }}" alt="{{ product.name }}">
+                                        <div class="card-icon">
+                                            <a class="icon" href="wishlist.html">
+                                                <i class="fa fa-heart-o" aria-hidden="true"></i>
+                                            </a>
+                                            <a class="icon-active" href="wishlist.html">
+                                                <i class="fa fa-heart" aria-hidden="true"></i>
+                                            </a>
+                                        </div>
+                                        <div class="shop-btn">
+                                            <a class="product-btn" href="{{ url_for('product_detail', product_id=product.id) }}">Shop Now</a>
+                                        </div>
+                                    </div>
+                                    <div class="text">
+                                        <h2><a href="product-single.html">{{ product.name }}</a></h2>
+                                        <div class="price">
+                                            <span class="present-price">${{ product.price }}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
                     </div>
                 </div>
             </div>
@@ -160,7 +186,7 @@
                         <div class="col-lg-7 col-md-9 col-12">
                             <div class="content">
                                 <div class="bg-text">
-                                    <h1>fasion</h1>
+                                    <h1>fashion</h1>
                                 </div>
                                 <h2>Stylish casual
                                     sweater & sneakers</h2>

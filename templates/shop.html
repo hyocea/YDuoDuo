@@ -232,23 +232,6 @@
                                                     <img src="{{ url_for('static',
                                                         filename='product_img/' + product.image_url) }}"
                                                              alt="{{ product.name }}">
-
-                                                    <ul class="cart-wrap">
-                                                        <li>
-                                                            <a href="cart.html" data-bs-toggle="tooltip"
-                                                               data-bs-html="true" title="Add To Cart"><i
-                                                                    class="fi flaticon-shopping-cart"></i></a>
-                                                        </li>
-                                                        <li data-bs-toggle="modal" data-bs-target="#popup-quickview">
-                                                            <button data-bs-toggle="tooltip" data-bs-html="true"
-                                                                title="Quick View"><i class="fi ti-eye"></i></button>
-                                                        </li>
-                                                        <li>
-                                                            <a href="compare.html" data-bs-toggle="tooltip"
-                                                                data-bs-html="true" title="Compare"><i
-                                                                    class="fa fa-compress" aria-hidden="true"></i></a>
-                                                        </li>
-                                                    </ul>
                                                     <div class="shop-btn">
                                                         <a class="product-btn" href="{{ url_for('product_detail',
                                             product_id=product.id) }}">Shop Now</a>

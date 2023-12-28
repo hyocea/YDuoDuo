@@ -3,12 +3,6 @@
     "use strict";
 
 
-    /*------------------------------------------
-        = ALL ESSENTIAL FUNCTIONS
-        ¸ü¶àÏÂÔØ£ºHttP://www.bootstrapmb.com
-    -------------------------------------------*/
-
-
     // Toggle mobile navigation
     function toggleMobileNavigation() {
         var navbar = $(".navigation-holder");

@@ -30,8 +30,8 @@ def allowed_file(filename):
         '.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 
-app.config['SQLALCHEMY_DATABASE_URI'] = prefix + os.path.join(os.path.dirname(app.root_path),
-                                                              os.getenv('DATABASE_FILE', 'data.db'))
+app.config['SQLALCHEMY_DATABASE_URI'] = prefix + \
+    os.path.join(os.path.dirname(app.root_path), os.getenv('DATABASE_FILE', 'data.db'))
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECRET_KEY'] = os.getenv('SECRET_KEY', 'dev')
@@ -290,6 +290,12 @@ def create_merchant():
 def delete_user(user_id):
     if current_user.role == 'admin':
         user_to_delete = User.query.get(user_id)
+
+        # 检查要删除的用户是否是管理员
+        if user_to_delete and user_to_delete.role == 'admin':
+            flash('管理员账号不能被删除。')
+            return redirect(url_for('admin_dashboard'))
+
         if user_to_delete:
             db.session.delete(user_to_delete)
             db.session.commit()
@@ -299,7 +305,7 @@ def delete_user(user_id):
         return redirect(url_for('admin_dashboard'))
     else:
         flash('只有管理员才能执行这个操作。')
-        return redirect(url_for('index'))
+        return redirect(url_for('admin_dashboard'))
 
 
 @app.route('/admin')
@@ -321,10 +327,19 @@ def add_product():
         image = request.files['productImage']
         stock = request.form.get('stock')
 
+        # 检查所有字段是否已填写且图片是否已上传
+        if not all([name, description, price, stock, image]):
+            flash('所有字段均为必填，包括图片上传。', 'error')
+            return render_template('add-product.html')
+
         # 验证和保存图片
         if image and allowed_file(image.filename):
             filename = secure_filename(image.filename)
             image.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+
+        else:
+            flash('上传的文件不符合要求。', 'error')
+            return render_template('add-product.html')
 
         # 创建新商品
         new_product = Product(
@@ -336,6 +351,7 @@ def add_product():
         db.session.add(new_product)
         db.session.commit()
 
+        flash('产品添加成功。', 'success')
         return redirect(url_for('admin_index'))
     return render_template('add-product.html')
 

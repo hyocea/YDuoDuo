@@ -52,7 +52,7 @@
                         </div>
                         <div class="col-lg-8 col-md-1 col-1">
                             <div id="navbar" class="collapse navbar-collapse navigation-holder">
-                                <button class="menu-close"><i class="ti-close"></i></button>
+                                <button class="menu-close"aria-label="a"><i class="ti-close"></i></button>
                                 <ul class="nav navbar-nav mb-2 mb-lg-0">
                                     <li><a class="active" href="{{ url_for('index') }}">Home</a></li>
                                     <li><a href="{{ url_for ('shop') }}">Shop</a></li>
@@ -66,22 +66,26 @@
                         <!-- end of nav-collapse -->
                         <div class="col-lg-2 col-md-2 col-2">
                             <div class="header-right">
-                                <div class="mini-cart">
-                                    <button class="cart-toggle-btn">
-                                        <a href="{{ url_for('cart') }}">
+                                <div class="mini-cart"
+                                     role="button"
+                                     aria-label="a">
+                                    <a href="{{ url_for('cart') }}">
+                                        <button aria-label="a"
+                                        class="cart-toggle-btn">
                                             <i class="fi flaticon-shopping-cart"
                                                style="color: black"></i>
-                                        </a>
-                                    </button>
+                                        </button>
+                                    </a>
                                 </div>
                                 <div class="header-search-form-wrapper">
                                     <div class="cart-search-contact">
-                                        <button class="search-toggle-btn">
-                                            <a href="{{ url_for('shop') }}">
+                                        <a href="{{ url_for('shop') }}">
+                                            <button class="search-toggle-btn"
+                                            aria-label="a">
                                                 <i class="fi flaticon-loupe"
                                                     style="color: black"></i>
-                                            </a>
-                                        </button>
+                                            </button>
+                                        </a>
                                     </div>
                                 </div>
 
