@@ -83,6 +83,8 @@ class Cart(db.Model):
     product_id = db.Column(db.Integer, db.ForeignKey('product.id'))
     quantity = db.Column(db.Integer, default=1)  # 新增数量字段，默认值为1
 
+    product = db.relationship('Product', backref='cart_items')
+
 
 # 订单模型
 
@@ -561,11 +563,15 @@ def get_cart_items():
 def checkout():
     out_of_stock_items = []
     cart_items = get_cart_items()
+    total_price = 0
 
     for item in cart_items:
         product = Product.query.get(item.product_id)
         if product and product.stock < item.quantity:
             out_of_stock_items.append(product.name)
+        else:
+            item.total = product.price * item.quantity
+            total_price += item.total
 
     if out_of_stock_items:
         flash(
@@ -573,7 +579,7 @@ def checkout():
             'warning')
         return redirect(url_for('cart'))  # 重定向回购物车页面
 
-    return render_template('checkout.html')
+    return render_template('checkout.html', cart_items=cart_items, total_price=total_price)
 
 
 # 商家查看订单的路由

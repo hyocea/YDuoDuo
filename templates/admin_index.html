@@ -58,14 +58,16 @@
                                             <td class="px-3 py-3">
                                                 <div class="flex items-center space-x-2">
                                                     <a href="{{ url_for('delete_product', product_id=product.id) }}"
-                                                       class="bg-white text-slate-700 border border-slate-200
-                                                    hover:bg-danger hover:border-danger hover:text-white inline-block
-                                                    text-center leading-5 text-tiny font-medium pt-[6px] pb-[5px]
-                                                    px-4  rounded-md "
-                                                    title="a">
-                                                       <button>
+                                                       >
+                                                       <button
+                                                           class="bg-white text-slate-700 border border-slate-200
+                                                        hover:bg-danger hover:border-danger hover:text-white inline-block
+                                                        text-center leading-5 text-tiny font-medium pt-[6px] pb-[5px]
+                                                        px-4  rounded-md "
+                                                        title="a">
                                                            Delete
-                                                       </bu>
+                                                       </button>
+                                                    </a>
                                                     </button>
                                                 </div>  
                                             </td>
