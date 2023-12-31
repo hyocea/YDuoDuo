@@ -49,13 +49,16 @@
                                                 <td class="action">
                                                     <ul>
                                                         <li class="c-btn">
-                                                            <a href="{{ url_for('product_detail', product_id=product.id) }}" data-bs-toggle="tooltip" title="View Product">
+                                                            <a href="{{ url_for('product_detail', product_id=product.id) }}"
+                                                               data-bs-toggle="tooltip" title="View Product"
+                                                               id="viewProductButton">
                                                                 <i class="fi flaticon-shopping-cart"></i>
                                                             </a>
                                                         </li>
 
                                                         <li class="w-btn"><a href="{{ url_for('remove_from_wishlist',
                                                         product_id=product.id) }}" data-bs-toggle="tooltip"
+                                                                             id="removeFromWishlistButton"
                                                                              title="Remove from Wishlist">
                                                             <i class="fi ti-trash"></i></a></li>
                                                     </ul>
@@ -76,5 +79,7 @@
 
     </div>
     <!-- end of page-wrapper -->
+
+    <script src="../static/assets/js/function.js"></script>
 
 {% endblock %}

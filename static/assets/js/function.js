@@ -112,14 +112,18 @@ document.addEventListener('DOMContentLoaded', (event) => {
 });
 
 
+document.addEventListener('keydown', function(event) {
+    // 检测 Alt + 1 是否被按下
+    if (event.altKey && event.keyCode === 49) {
+        // 将焦点移动到查看产品详情按钮
+        document.getElementById('viewProductButton').focus();
+    }
 
-
-
-
-
-
-
-
-
+    // 检测 Alt + 2 是否被按下
+    if (event.altKey && event.keyCode === 50) {
+        // 将焦点移动到从愿望清单中移除产品按钮
+        document.getElementById('removeFromWishlistButton').focus();
+    }
+});
 
 

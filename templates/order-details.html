@@ -6,14 +6,6 @@
                     <div class="page-title">
                         <h3 class="mb-0 text-[28px]">Order Details</h3>
                         <ul class="text-tiny font-medium flex items-center space-x-3 text-text3">
-                            <li class="breadcrumb-item text-muted">
-                                <a href="account-list.html" class="text-hover-primary"> Home</a>
-                            </li>
-                            <li class="breadcrumb-item flex items-center">
-                                <span class="inline-block bg-text3/60 w-[4px] h-[4px] rounded-full"></span>
-                            </li>
-                            <li class="breadcrumb-item text-muted">Order Details #19893507</li>
-                                           
                         </ul>
                     </div>
                 </div>
@@ -22,8 +14,8 @@
                 <div class="">
                     <div class="flex items-center flex-wrap justify-between px-8 mb-6 bg-white rounded-t-md rounded-b-md shadow-xs py-6">
                         <div class="relative">
-                            <h5 class="font-normal mb-0">Oder ID : #26BC663E</h5>
-                            <p class="mb-0 text-tiny">Order Created : Jan 26, 2023 10:30 AM</p>
+                            <h5 class="font-normal mb-0">Oder ID : #{{ order.id }}</h5>
+                            <p class="mb-0 text-tiny">Order Created : {{ order.date.strftime('%Y-%m-%d') }} </p>
                         </div>
                         <form method="post" action="{{ url_for('order_details', order_id=order.id) }}">
                             <div class="flex sm:justify-end flex-wrap sm:space-x-6 mt-5 md:mt-0">

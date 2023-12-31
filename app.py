@@ -87,7 +87,6 @@ class Cart(db.Model):
 
 
 # 订单模型
-
 class Order(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
@@ -115,7 +114,6 @@ class OrderProduct(db.Model):
         db.ForeignKey('product.id'),
         primary_key=True)
     quantity = db.Column(db.Integer, nullable=False)
-    # 这里可以添加更多关于订单的字段，例如状态、支付信息等
 
 
 # Create database tables
@@ -445,6 +443,7 @@ def cart():
 
 
 @app.route('/wishlist')
+@login_required
 def wishlist():
     # 假设 current_user 是当前登录的用户
     return render_template('wishlist.html', products=current_user.wishlist)
@@ -643,18 +642,6 @@ def shop():
 
     filtered_products = query.all()
     return render_template('shop.html', products=filtered_products)
-
-
-@app.route('/about')
-def about():
-    # 这里可以定义关于页面的逻辑
-    return render_template('about.html')
-
-
-@app.route('/product')
-def product():
-    # 这里可以定义关于页面的逻辑
-    return render_template('product.html')
 
 
 @app.errorhandler(401)
