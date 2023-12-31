@@ -357,6 +357,7 @@ def add_product():
 
 
 @app.route('/product/<int:product_id>')
+@login_required
 def product_detail(product_id):
     product = Product.query.get_or_404(product_id)
     return render_template('product-single.html', product=product)
